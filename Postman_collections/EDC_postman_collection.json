@@ -1,0 +1,656 @@
+{
+	"info": {
+		"_postman_id": "9043984c-2f4a-4c67-9cbf-69b54c3b3c25",
+		"name": "EDC jar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17677312",
+		"_collection_link": "https://reservist-metadata-broker.postman.co/workspace/EMDS_2025~5198385d-45d0-432c-9008-3123b978312b/collection/17677312-9043984c-2f4a-4c67-9cbf-69b54c3b3c25?action=share&source=collection_link&creator=17677312"
+	},
+	"item": [
+		{
+			"name": "Provider",
+			"item": [
+				{
+					"name": "Create asset",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"@context\": {\r\n    \"@vocab\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n  },\r\n  \"@id\": \"asset2Id\",\r\n  \"properties\": {\r\n    \"name\": \"product description\",\r\n    \"contenttype\": \"application/json\"\r\n  },\r\n  \"dataAddress\": {\r\n    \"type\": \"HttpData\",\r\n    \"name\": \"Test asset\",\r\n    \"baseUrl\": \"http://universities.hipolabs.com/search?name=europe\",\r\n    \"proxyPath\": \"true\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://130.188.160.106:8080/management/v3/assets",
+							"protocol": "http",
+							"host": [
+								"130",
+								"188",
+								"160",
+								"106"
+							],
+							"port": "8080",
+							"path": [
+								"management",
+								"v3",
+								"assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create asset with credentials",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"@context\": {\r\n    \"@vocab\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n  },\r\n  \"@id\": \"asset3Id\",\r\n  \"properties\": {\r\n    \"name\": \"product description\",\r\n    \"contenttype\": \"application/json\"\r\n  },\r\n  \"dataAddress\": {\r\n    \"type\": \"HttpData\",\r\n    \"name\": \"Test asset with API key\",\r\n    \"baseUrl\": \"https://newsapi.org/v2/top-headlines?country=us\",\r\n    \"proxyPath\": \"true\",\r\n    \"authKey\": \"X-API-Key\",\r\n    \"authCode\": \"2e275e55d8294488a656776fdc03e06e\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://130.188.160.106:8080/management/v3/assets",
+							"protocol": "http",
+							"host": [
+								"130",
+								"188",
+								"160",
+								"106"
+							],
+							"port": "8080",
+							"path": [
+								"management",
+								"v3",
+								"assets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create policy",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"@context\": {\r\n    \"@vocab\": \"https://w3id.org/edc/v0.0.1/ns/\",\r\n    \"odrl\": \"http://www.w3.org/ns/odrl/2/\"\r\n  },\r\n  \"@id\": \"aPolicy2\",\r\n  \"policy\": {\r\n    \"@context\": \"http://www.w3.org/ns/odrl.jsonld\",\r\n    \"@type\": \"Set\",\r\n    \"permission\": [],\r\n    \"prohibition\": [],\r\n    \"obligation\": []\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://130.188.160.106:8080/management/v3/policydefinitions",
+							"protocol": "http",
+							"host": [
+								"130",
+								"188",
+								"160",
+								"106"
+							],
+							"port": "8080",
+							"path": [
+								"management",
+								"v3",
+								"policydefinitions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create contract",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"@context\": {\r\n    \"@vocab\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n  },\r\n  \"@id\": \"1.1\",\r\n  \"accessPolicyId\": \"aPolicy2\",\r\n  \"contractPolicyId\": \"aPolicy2\",\r\n  \"assetsSelector\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://130.188.160.106:8080/management/v3/contractdefinitions",
+							"protocol": "http",
+							"host": [
+								"130",
+								"188",
+								"160",
+								"106"
+							],
+							"port": "8080",
+							"path": [
+								"management",
+								"v3",
+								"contractdefinitions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create contract (specify assets)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"@context\": {\r\n    \"@vocab\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n  },\r\n  \"@id\": \"1.2\",\r\n  \"accessPolicyId\": \"aPolicy2\",\r\n  \"contractPolicyId\": \"aPolicy2\",\r\n  \"assetsSelector\": [\r\n    {\r\n     \"@type\": \"https://w3id.org/edc/v0.0.1/ns/CriterionDto\",\r\n     \"operandLeft\": \"https://w3id.org/edc/v0.0.1/ns/id\",\r\n      \"operator\": \"=\",\r\n      \"operandRight\": \"asset2Id\"\r\n    }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://130.188.160.106:8080/management/v3/contractdefinitions",
+							"protocol": "http",
+							"host": [
+								"130",
+								"188",
+								"160",
+								"106"
+							],
+							"port": "8080",
+							"path": [
+								"management",
+								"v3",
+								"contractdefinitions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Consumer",
+			"item": [
+				{
+					"name": "Fetch catalog",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"let contractOfferId = response[\"dcat:dataset\"][\"odrl:hasPolicy\"][\"@id\"];\r",
+									"pm.collectionVariables.set(\"contract-offer-id\", contractOfferId);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"@context\": {\r\n    \"@vocab\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n  },\r\n  \"counterPartyAddress\": \"http://130.188.160.106:19194/protocol\",\r\n  \"protocol\": \"dataspace-protocol-http\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://130.188.160.106:8081/management/v3/catalog/request",
+							"protocol": "http",
+							"host": [
+								"130",
+								"188",
+								"160",
+								"106"
+							],
+							"port": "8081",
+							"path": [
+								"management",
+								"v3",
+								"catalog",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Negotiate contract",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"pm.collectionVariables.set(\"transfer-process-id\", response[\"@id\"]);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"@context\": {\r\n    \"@vocab\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n  },\r\n  \"@type\": \"ContractRequest\",\r\n  \"counterPartyAddress\": \"http://130.188.160.106:19194/protocol\",\r\n  \"protocol\": \"dataspace-protocol-http\",\r\n  \"policy\": {\r\n    \"@context\": \"http://www.w3.org/ns/odrl.jsonld\",\r\n    \"@id\": \"{{contract-offer-id}}\",\r\n   // \"@id\": \"MS4x:YXNzZXQySWQ=:ZmJiYzE1OTctZjJiMS00ZTc0LThlODEtOTQzNWJmMGE1NzVj\",\r\n   \r\n    \"@type\": \"Offer\",\r\n    \"assigner\": \"provider\",\r\n    \"target\": \"assetId\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://130.188.160.106:8081/management/v3/contractnegotiations",
+							"protocol": "http",
+							"host": [
+								"130",
+								"188",
+								"160",
+								"106"
+							],
+							"port": "8081",
+							"path": [
+								"management",
+								"v3",
+								"contractnegotiations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get contract agreement id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"let response = pm.response.json();\r",
+									"pm.collectionVariables.set(\"contract-agreemeent-id\", response.contractAgreementId);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"@context\": {\r\n    \"@vocab\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n  },\r\n  \"counterPartyAddress\": \"http://130.188.160.106:19194/protocol\",\r\n  \"protocol\": \"dataspace-protocol-http\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://130.188.160.106:8081/management/v3/contractnegotiations/{{transfer-process-id}}",
+							"protocol": "http",
+							"host": [
+								"130",
+								"188",
+								"160",
+								"106"
+							],
+							"port": "8081",
+							"path": [
+								"management",
+								"v3",
+								"contractnegotiations",
+								"{{transfer-process-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Start transfer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"@context\": {\r\n    \"@vocab\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n  },\r\n  \"@type\": \"TransferRequestDto\",\r\n  \"connectorId\": \"provider\",\r\n  \"counterPartyAddress\": \"http://130.188.160.106:19194/protocol\",\r\n  \"contractId\": \"{{contract-agreemeent-id}}\",\r\n  \"protocol\": \"dataspace-protocol-http\",\r\n  \"transferType\": \"HttpData-PUSH\",\r\n  \"dataDestination\": {\r\n    \"type\": \"HttpData\",\r\n    \"baseUrl\": \"http://localhost:5000/receive-data\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://130.188.160.106:8081/management/v3/transferprocesses",
+							"protocol": "http",
+							"host": [
+								"130",
+								"188",
+								"160",
+								"106"
+							],
+							"port": "8081",
+							"path": [
+								"management",
+								"v3",
+								"transferprocesses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Consumer (external)",
+			"item": [
+				{
+					"name": "Fetch catalog",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"let contractOfferId = response[\"dcat:dataset\"][\"odrl:hasPolicy\"][\"@id\"];\r",
+									"pm.collectionVariables.set(\"contract-offer-id\", contractOfferId);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"@context\": {\r\n    \"@vocab\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n  },\r\n  \"counterPartyAddress\": \"http://130.188.160.106:19194/protocol\",\r\n  \"protocol\": \"dataspace-protocol-http\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://130.188.160.23:8080/management/v3/catalog/request",
+							"protocol": "http",
+							"host": [
+								"130",
+								"188",
+								"160",
+								"23"
+							],
+							"port": "8080",
+							"path": [
+								"management",
+								"v3",
+								"catalog",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Negotiate contract",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"pm.collectionVariables.set(\"transfer-process-id\", response[\"@id\"]);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"@context\": {\r\n    \"@vocab\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n  },\r\n  \"@type\": \"ContractRequest\",\r\n  \"counterPartyAddress\": \"http://130.188.160.106:19194/protocol\",\r\n  \"protocol\": \"dataspace-protocol-http\",\r\n  \"policy\": {\r\n    \"@context\": \"http://www.w3.org/ns/odrl.jsonld\",\r\n    \"@id\": \"{{contract-offer-id}}\",\r\n   // \"@id\": \"MS4x:YXNzZXQySWQ=:MjVlYmVmNmUtZDgyMS00NjAxLWFmNzctYjZlNjZkOTZiMjEy\",\r\n   \r\n    \"@type\": \"Offer\",\r\n    \"assigner\": \"provider\",\r\n    \"target\": \"assetId\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://130.188.160.23:8080/management/v3/contractnegotiations",
+							"protocol": "http",
+							"host": [
+								"130",
+								"188",
+								"160",
+								"23"
+							],
+							"port": "8080",
+							"path": [
+								"management",
+								"v3",
+								"contractnegotiations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get contract agreement id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"let response = pm.response.json();\r",
+									"pm.collectionVariables.set(\"contract-agreemeent-id\", response.contractAgreementId);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"@context\": {\r\n    \"@vocab\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n  },\r\n  \"counterPartyAddress\": \"http://130.188.160.106:19194/protocol\",\r\n  \"protocol\": \"dataspace-protocol-http\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://130.188.160.23:8080/management/v3/contractnegotiations/{{transfer-process-id}}",
+							"protocol": "http",
+							"host": [
+								"130",
+								"188",
+								"160",
+								"23"
+							],
+							"port": "8080",
+							"path": [
+								"management",
+								"v3",
+								"contractnegotiations",
+								"{{transfer-process-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Start transfer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"@context\": {\r\n    \"@vocab\": \"https://w3id.org/edc/v0.0.1/ns/\"\r\n  },\r\n  \"@type\": \"TransferRequestDto\",\r\n  \"connectorId\": \"provider\",\r\n  \"counterPartyAddress\": \"http://130.188.160.106:19194/protocol\",\r\n  \"contractId\": \"{{contract-agreemeent-id}}\",\r\n  \"protocol\": \"dataspace-protocol-http\",\r\n  \"transferType\": \"HttpData-PUSH\",\r\n  \"dataDestination\": {\r\n    \"type\": \"HttpData\",\r\n    \"baseUrl\": \"http://130.188.160.22:8080/receive-data\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://130.188.160.23:8080/management/v3/transferprocesses",
+							"protocol": "http",
+							"host": [
+								"130",
+								"188",
+								"160",
+								"23"
+							],
+							"port": "8080",
+							"path": [
+								"management",
+								"v3",
+								"transferprocesses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Extra stuff",
+			"item": [
+				{
+					"name": "newAPI with key",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "2e275e55d8294488a656776fdc03e06e",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "x-api-key",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://newsapi.org/v2/top-headlines?country=us",
+							"protocol": "https",
+							"host": [
+								"newsapi",
+								"org"
+							],
+							"path": [
+								"v2",
+								"top-headlines"
+							],
+							"query": [
+								{
+									"key": "country",
+									"value": "us"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "contract-offer-id",
+			"value": ""
+		},
+		{
+			"key": "transfer-process-id>",
+			"value": ""
+		},
+		{
+			"key": "transfer-process-id",
+			"value": ""
+		},
+		{
+			"key": "contract-agreemeent-id",
+			"value": ""
+		}
+	]
+}
