@@ -14,8 +14,8 @@ This demo is based on EDC Samples found in https://github.com/eclipse-edc/Sample
 ## Data provider - Define data resource to be shared:
 - Open Postman and import the included collections. In the provider's collection: 
 - Create asset allows you to specify the shared asset. At this point two asset examples are included:
-a. An asset that retrieves data from API without the need of specifying credentials
-b. An asset that uses an API key to retrieve data from an API
+    1. An asset that retrieves data from API without the need of specifying credentials
+    2. An asset that uses an API key to retrieve data from an API
 - Execute one of the provided asset requests.
 - Execute "Create policy" and Create contract" requests. (At this point I cannot find how the contract / policy is linked with the asset?)
 
