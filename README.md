@@ -20,11 +20,12 @@ This demo is based on EDC Samples found in https://github.com/eclipse-edc/Sample
 - Execute "Create policy" and Create contract" requests. (At this point I cannot find how the contract / policy is linked with the asset?)
 
 ## Data consumer: (continue from here and explain the two different consumer options (local and remote))
-Start web service that is able to retrieve data from provider
-Navigate to "deployEMDS/simpleHTTPserver" folder and start the service with command "python3 dataReceived.py". In this case, the service is deployed on a third server instance ()
-In Postman
-Execute "Fetch catalog" request
-In "Negotiate contract" request paste the policy id of the asset you want to access (found in the response body of the previous request) to policy id field (e.g., "@id": "MS4x:YXNzZXQySWQ=:YTVlYmJjOGUtZGFiNi00Yzg2LWE0NGItZmU1YzBjZTNlZGIw").  Execute "Negotiate contract"
-Execute "Get contract agreement id" request. The "{{transfer-process-id}}" parameter is automatically copied from the previous phase.
-Execute "Start transfer" command. The "{{contract-agreemeent-id}}" is automatically copied from the previous phase.
-Monitor the output of the "simpleHTTPserver" service. You should see the data submitted by the provider in the terminal.
+- Start web service that is able to retrieve data from provider
+- Navigate to "deployEMDS/simpleHTTPserver" folder and start the service with command "python3 dataReceived.py". In this case, the service is deployed on a third server instance ()
+- In Postman
+  - Execute "Fetch catalog" request
+  - In "Negotiate contract" request paste the policy id of the asset you want to access (found in the response body of the previous request) to policy id field (e.g., "@id": "MS4x:YXNzZXQySWQ=:YTVlYmJjOGUtZGFiNi00Yzg2LWE0NGItZmU1YzBjZTNlZGIw").
+  - Execute "Negotiate contract"
+  - Execute "Get contract agreement id" request. The "{{transfer-process-id}}" parameter is automatically copied from the previous phase.
+  - Execute "Start transfer" command. The "{{contract-agreemeent-id}}" is automatically copied from the previous phase.
+  - Monitor the output of the "simpleHTTPserver" service. You should see the data submitted by the provider in the terminal.
